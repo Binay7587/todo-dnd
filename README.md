@@ -1,3 +1,6 @@
+# Todo-DnD (Todo with Drag and Drop)
+It is a web application built with Next.js and powered by the react-beautiful-dnd library. It allows users to create and manage their personal todo lists using an intuitive drag and drop interface. Organize your tasks across customizable columns and track your progress effortlessly. With its responsive design and smooth user experience, Todo-DnD makes task management a breeze. Start boosting your productivity today!
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
