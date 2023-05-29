@@ -1,4 +1,6 @@
+"use client";
 import Column from "../components/Column";
+import { DragDropContext } from "react-beautiful-dnd";
 
 type TaskProps = {
     id: string;
@@ -36,24 +38,35 @@ export default function Home() {
             "column-2": {
                 id: "column-2",
                 title: "In Progress",
-                taskIds: ["task-4"],
+                taskIds: [],
             },
             "column-3": {
                 id: "column-1",
                 title: "Completed",
-                taskIds: ["task-1", "task-2", "task-3"],
+                taskIds: ["task-1", "task-2", "task-3", "task-4"],
             },
         },
         columnOrder: ["column-1", "column-2", "column-3"],
     };
-    return <main className="flex gap-4 m-8">
-        {
-            taskList.columnOrder.map((columnId) => {
-                const column = taskList.columns[columnId];
-                const tasks = column.taskIds.map((taskId) => taskList.tasks[taskId]);
 
-                return <Column key={column.id} column={column} tasks={tasks} />;
-            })
-        }
-    </main>;
+    const onDragEnd = () => (result) => {
+        // TODO: reorder our column
+    };
+
+    return (
+        <DragDropContext onDragEnd={onDragEnd()}>
+            <main className="flex gap-4 m-8">
+                {taskList.columnOrder.map((columnId) => {
+                    const column = taskList.columns[columnId];
+                    const tasks = column.taskIds.map(
+                        (taskId) => taskList.tasks[taskId]
+                    );
+
+                    return (
+                        <Column key={column.id} column={column} tasks={tasks} />
+                    );
+                })}
+            </main>
+        </DragDropContext>
+    );
 }
